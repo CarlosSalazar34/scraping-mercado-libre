@@ -31,6 +31,7 @@ def create_db():
     conn.commit()
     conn.close()
 
+
 def insert_data_db(title, price, link, image):
     conn = sqlite3.connect('my_database.db')
     cursor = conn.cursor()

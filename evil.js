@@ -20,8 +20,7 @@ document.querySelectorAll('.ui-search-layout__item').forEach(item => {
 console.log(objects);
 
 fetch(
-    // `${URL}/send-data`,
-    `http://192.168.4.52:5000/send-data`,
+    `${URL}/send-data`, //Aqui tienes que poner tu ip con el endpoint
     {
         method: 'POST',
         headers: {
