@@ -42,3 +42,5 @@ def insert_data_db(title, price, link, image):
 
 # delete_table()
 # create_db()
+
+print(get_data())
