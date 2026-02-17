@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from functions import insert_data_db
-
+from functions import get_data
 
 app =  Flask(__name__)
 CORS(app)
@@ -10,10 +10,19 @@ CORS(app)
 def index():
     return jsonify({'message': 'Hello, World!'})
 
+@app.route("/get-products", methods=['GET'])
+def get_products():
+    data = get_data()
+    # print(data)
+    return jsonify({
+        "products": data
+    })
+    
+
 @app.route("/send-data", methods=['POST'])
 def send_data():
     data = request.get_json()
-    print(data)
+    # print(data)
     for item in data:
         title = item.get('title')
         price = item.get('price')

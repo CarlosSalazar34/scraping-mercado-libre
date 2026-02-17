@@ -1,3 +1,5 @@
+import { URL } from "./constants";
+
 const objects = [];
 
 document.querySelectorAll('.ui-search-layout__item').forEach(item => {
@@ -18,7 +20,7 @@ document.querySelectorAll('.ui-search-layout__item').forEach(item => {
 console.log(objects);
 
 fetch(
-    'http://172.20.10.3:5000/send-data',
+    `${URL}/send-data`,
     {
         method: 'POST',
         headers: {

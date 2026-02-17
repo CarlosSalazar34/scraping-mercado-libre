@@ -1,5 +1,14 @@
 import sqlite3
 
+def get_data():
+    conn = sqlite3.connect('my_database.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM my_table")
+    data = cursor.fetchall()
+    conn.commit()
+    conn.close()
+    return data
+
 def delete_table():
     conn = sqlite3.connect('my_database.db')
     cursor = conn.cursor()
@@ -31,5 +40,5 @@ def insert_data_db(title, price, link, image):
     conn.commit()
     conn.close()    
 
-delete_table()
-create_db()
+# delete_table()
+# create_db()
