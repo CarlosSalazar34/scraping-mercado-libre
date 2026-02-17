@@ -2,12 +2,14 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from functions import insert_data_db
 from functions import get_data
+from execution import get_coords
 
 app =  Flask(__name__)
 CORS(app)
 
 @app.route('/')
 def index():
+    get_coords()
     return jsonify({'message': 'Hello, World!'})
 
 @app.route("/get-products", methods=['GET'])
